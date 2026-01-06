@@ -1,0 +1,71 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="512"
+  height="512"
+  viewBox="0 0 512 512"
+>
+  <style>
+    .glitch-layer {
+    opacity: 0.6;
+    pointer-events: none;
+    mix-blend-mode: multiply;
+    }
+
+    @media (prefers-color-scheme: dark) {
+    .glitch-layer { mix-blend-mode: screen; }
+    }
+
+    .gl-r { animation: gl-shift 2.4s steps(1,end) infinite; }
+    .gl-g { animation: gl-shift 2.4s steps(1,end) infinite .05s; }
+    .gl-b { animation: gl-shift 2.4s steps(1,end) infinite .1s; }
+
+    .gl-r .o1, .gl-r .o2, .gl-r .o3 { stroke: #DB4ADB !important; }
+    .gl-g .o1, .gl-g .o2, .gl-g .o3 { stroke: #00E7FF !important; }
+    .gl-b .o1, .gl-b .o2, .gl-b .o3 { stroke: #6E98E9 !important; }
+
+    @keyframes gl-shift {
+    0%, 12%   { transform: translate(0,0); }
+    13%, 16%  { transform: translate(-3px,-1px); }
+    17%, 20%  { transform: translate(3px,1px); }
+    21%, 22%  { transform: translate(-2px,2px); }
+    23%, 100% { transform: translate(0,0); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+    .gl-r, .gl-g, .gl-b { animation: none; }
+    }
+  </style>
+
+  <defs>
+    <!-- Base orbits -->
+    <g id="logo-source" fill="none" stroke-linecap="round">
+      <ellipse class="o1" cx="256" cy="256" rx="172" ry="68" stroke="#00E7FF" stroke-width="18"/>
+      <ellipse class="o2" cx="256" cy="256" rx="172" ry="68" stroke="#DB4ADB" stroke-width="18" transform="rotate(60 256 256)"/>
+      <ellipse class="o3" cx="256" cy="256" rx="172" ry="68" stroke="#6E98E9" stroke-width="18" transform="rotate(-60 256 256)"/>
+    </g>
+  </defs>
+
+  <!-- Glitch orbits -->
+  <g>
+    <use href="#logo-source" class="glitch-layer gl-r"/>
+    <use href="#logo-source" class="glitch-layer gl-g"/>
+    <use href="#logo-source" class="glitch-layer gl-b"/>
+    <use href="#logo-source"/>
+  </g>
+
+  <!-- Center X as letter -->
+  <text
+    x="256"
+    y="272"
+    text-anchor="middle"
+    font-size="56"
+    font-weight="700"
+    font-family="Inter, SF Pro Display, system-ui, -apple-system, BlinkMacSystemFont, sans-serif"
+    fill="#ffffff"
+    stroke="#000000"
+    stroke-width="3"
+    paint-order="stroke fill"
+  >
+    X
+  </text>
+</svg>
